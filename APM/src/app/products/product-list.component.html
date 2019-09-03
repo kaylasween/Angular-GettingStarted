@@ -16,6 +16,11 @@
                 <h4>Filtered by: {{listFilter}} </h4>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ ratingClickMessage }}
+            </div>
+        </div>
         <div class="table-responsive">
             <table class="table table-striped" *ngIf="products && products.length">
                 <thead>
@@ -47,7 +52,10 @@
                         <td>{{ product.productCode | uppercase | convertToSpaces:'-'}}</td>
                         <td>{{ product.releaseDate }}</td>
                         <td>{{ product.price | currency }}</td>
-                        <td>{{ product.starRating }}</td>
+                        <td>
+                            <pm-star [rating]='product.starRating' (ratingClicked)='onRatingClicked($event)'></pm-star>
+                            <span class="sr-only">{{ product.starRating }}</span>
+                        </td>
                     </tr>
                 </tbody>
             </table>

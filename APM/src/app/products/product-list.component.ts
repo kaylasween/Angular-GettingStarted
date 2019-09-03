@@ -13,6 +13,7 @@ export class ProductListComponent implements OnInit {
     imageWidth = 50;
     imageMargin = 2;
     showImage = false;
+    ratingClickMessage: string;
 
     _listFilter: string;
     get listFilter(): string {
@@ -81,6 +82,10 @@ export class ProductListComponent implements OnInit {
     constructor() {
         this.filteredProducts = this.products;
         this.listFilter = '';
+    }
+
+    onRatingClicked(message: string): void {
+        this.ratingClickMessage = message;
     }
 
     toggleImage(): void {
